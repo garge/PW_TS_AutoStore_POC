@@ -1,0 +1,17 @@
+name: Playwright Automation Test Run
+on: workflow_dispatch
+jobs:
+  alltests:
+    name: UI Testcases
+    runs-on: ubuntu-latest
+    container:
+      image: playwright:v1.40.0-jammy
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Execute Playwright tests
+        run:
+          npm install
+          npx playwright run
