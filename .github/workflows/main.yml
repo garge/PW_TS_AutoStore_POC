@@ -22,4 +22,4 @@ jobs:
       - name: Installing xvfb
         run: sudo apt-get install xvfb
       - name: Execute Playwright tests
-        run:  xvfb-run node producttest.spec.ts
+        run:  xvfb-run node tests/producttest.spec.ts
