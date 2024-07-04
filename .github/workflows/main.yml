@@ -4,14 +4,21 @@ jobs:
   alltests:
     name: UI Testcases
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright
+    #container:
+    # image: mcr.microsoft.com/playwright
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
         with:
           ref: main
+      - name: Setup Node js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Dependencies
+        run: npm install
+      - name: Install Browsers for Playwright
+        run: npm playwright install
+        
       - name: Execute Playwright tests
-        run:
-          npm install
-          npx playwright run
+        run:  npx playwright test
